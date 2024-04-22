@@ -1,0 +1,69 @@
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Fitness Plan</title>-->
+<!--    <style>-->
+<!--        @import "static/css/fitnessPlan.css";-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h2>Fitness Plan</h2>-->
+<!--<table id="fitnessPlanTable">-->
+<!--    <tr>-->
+<!--        <th>Plan ID</th>-->
+<!--        <th>Plan Level</th>-->
+<!--        <th>Effective Date</th>-->
+<!--    </tr>-->
+<!--</table>-->
+
+<!--<script>-->
+<!--    fetch('http://localhost:8080/fitnessPlan')-->
+<!--        .then(response => response.json())-->
+<!--        .then(data => {-->
+<!--            let table = document.getElementById('fitnessPlanTable');-->
+<!--            data.forEach(item => {-->
+<!--                let row = table.insertRow();-->
+<!--                let cell1 = row.insertCell();-->
+<!--                let cell2 = row.insertCell();-->
+<!--                let cell3 = row.insertCell();-->
+<!--                cell1.innerHTML = item.planId;-->
+<!--                cell2.innerHTML = item.planLevel;-->
+<!--                cell3.innerHTML = item.effectiveDate;-->
+<!--            });-->
+<!--        })-->
+<!--        .catch(error => console.error('Error:', error));-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fitness Plan</title>
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="static/css/fitnessPlan.css">
+</head>
+<body>
+<h2>Fitness Plan</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Plan ID</th>
+        <th>Plan Level</th>
+        <th>Effective Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- 使用Thymeleaf迭代渲染数据 -->
+    <tr th:each="FitnessPlan : ${fitnessPlans}">
+        <td th:text="${FitnessPlan.plan_id}"></td>
+        <td th:text="${FitnessPlan.plan_level}"></td>
+        <td th:text="${FitnessPlan.plan_date}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
